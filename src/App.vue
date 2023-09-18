@@ -7,5 +7,3 @@ import TheHeader from './components/TheHeader.vue'
   <TheHeader />
   <RouterView />
 </template>
-
-<style scoped></style>

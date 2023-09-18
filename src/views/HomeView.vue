@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TaskItem from '@/components/TaskItem.vue'
+
 const taskList = [
   { title: 'play gloomhaven', isFav: true },
   { title: 'mow the lawn', isFav: false },
@@ -10,10 +12,7 @@ const taskList = [
 <template>
   <main>
     <div class="flex flex-col gap-3">
-      <div class="flex justify-between px-4 py-5 shadow bg-slate-600 rounded" v-for="(task, index) in taskList" :key="index">
-        <p>{{ task.title }}</p>
-        <div class="flex gap-2"></div>
-      </div>
+      <TaskItem v-for="(task, index) in taskList" :key="index" :task="task" />
     </div>
   </main>
 </template>
