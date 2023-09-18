@@ -8,7 +8,7 @@ const taskStore = useTaskStore()
 <template>
   <main>
     <div class="flex flex-col gap-3">
-      <TaskItem v-for="task in taskStore" :key="task.id" :task="task" />
+      <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" />
     </div>
   </main>
 </template>
