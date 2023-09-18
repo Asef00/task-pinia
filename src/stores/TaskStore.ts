@@ -19,6 +19,9 @@ export const useTaskStore = defineStore('taskStore', {
       return this.tasks.reduce((p, c) => {
         return c.isFav ? p + 1 : p
       }, 0)
+    },
+    totalCount(): number {
+      return this.tasks.length
     }
   }
 })
