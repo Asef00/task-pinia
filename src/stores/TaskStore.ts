@@ -31,6 +31,10 @@ export const useTaskStore = defineStore('taskStore', {
     deleteTask(id: number) {
       const removeIndex = this.tasks.map((item) => item.id).indexOf(id)
       ~removeIndex && this.tasks.splice(removeIndex, 1)
+    },
+    toggleFav(id: number) {
+      const toggleTask = this.tasks.find((item) => item.id == id)
+      toggleTask.isFav = !toggleTask.isFav
     }
   }
 })

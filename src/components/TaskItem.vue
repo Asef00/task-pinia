@@ -5,7 +5,7 @@
       <button @click="taskStore.deleteTask(task.id)">
         <i class="material-icons hover:text-gray-50 drop-shadow">delete</i>
       </button>
-      <button>
+      <button @click="taskStore.toggleFav(task.id)">
         <i
           class="material-icons hover:text-gray-50 drop-shadow"
           :class="{ 'text-red-600': props.task.isFav }"
