@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { useTaskStore } from '@/stores/TaskStore'
+
+const activeClass = 'bg-lime-500 text-black border-black'
+
+const taskStore = useTaskStore()
 </script>
 
 <template>
@@ -15,8 +19,20 @@ import { RouterLink } from 'vue-router'
       </div>
     </div>
     <nav class="flex gap-2 justify-end">
-      <RouterLink class="border px-2 py-1 rounded" to="/">All Tasks</RouterLink>
-      <RouterLink class="border px-2 py-1 rounded" to="/favorites">Favorites</RouterLink>
+      <button
+        @click="taskStore.filter = 'all'"
+        class="border px-2 py-1 rounded"
+        :class="[taskStore.filter === 'all' ? activeClass : '']"
+      >
+        All Tasks
+      </button>
+      <button
+        @click="taskStore.filter = 'fav'"
+        class="border px-2 py-1 rounded"
+        :class="[taskStore.filter === 'fav' ? activeClass : '']"
+      >
+        Favorites
+      </button>
     </nav>
   </header>
 </template>
