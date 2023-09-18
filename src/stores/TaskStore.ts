@@ -27,6 +27,10 @@ export const useTaskStore = defineStore('taskStore', {
   actions: {
     addTask(task: Task) {
       this.tasks.push(task)
+    },
+    deleteTask(id: number) {
+      const removeIndex = this.tasks.map((item) => item.id).indexOf(id)
+      ~removeIndex && this.tasks.splice(removeIndex, 1)
     }
   }
 })
