@@ -6,10 +6,8 @@
 </template>
 
 <script setup lang="ts">
-interface Task {
-  title: String
-  isFav: Boolean
-}
+import type { Task } from '@/types/Task'
+
 const props = defineProps<{
   task: Task
 }>()
