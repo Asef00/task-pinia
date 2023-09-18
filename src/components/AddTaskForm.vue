@@ -18,7 +18,9 @@ const newTask = ref('')
 const taskStore = useTaskStore()
 
 const addTask = () => {
-  taskStore.addTask({ id: taskStore.totalCount + 1, title: newTask.value, isFav: false })
-  newTask.value = ''
+  if (newTask.value.length) {
+    taskStore.addTask({ id: taskStore.totalCount + 1, title: newTask.value, isFav: false })
+    newTask.value = ''
+  }
 }
 </script>
