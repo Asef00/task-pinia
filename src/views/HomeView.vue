@@ -12,6 +12,7 @@ const taskStore = useTaskStore()
         <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" />
       </template>
       <template v-else-if="taskStore.filter === 'fav'">
+        <p>You have {{ taskStore.favsCount }} favorite tasks</p>
         <TaskItem v-for="task in taskStore.favs" :key="task.id" :task="task" />
       </template>
     </div>
