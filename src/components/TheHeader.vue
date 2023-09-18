@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router'
     </div>
     <nav class="flex gap-2 justify-end">
       <RouterLink class="border px-2 py-1 rounded" to="/">All Tasks</RouterLink>
-      <RouterLink class="border px-2 py-1 rounded" to="/about">Favourites</RouterLink>
+      <RouterLink class="border px-2 py-1 rounded" to="/about">Favorites</RouterLink>
     </nav>
   </header>
 </template>
