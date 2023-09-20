@@ -28,13 +28,12 @@ export const useTaskStore = defineStore('taskStore', {
       this.loading = true
 
       const res = await fetch('http://localhost:3000/tasksa')
+      const data = await res.json()
       if (!res.ok) {
-        // this.alert.message = (data && data.message) || res.statusText;
-        this.alert.message = 'Something went wrong!';
+        this.alert.message = (data && data.message) || res.statusText;
         this.alert.type = 'error'
         this.alert.show = true
       }
-      const data = await res.json()
 
       this.tasks = data
       this.loading = false
