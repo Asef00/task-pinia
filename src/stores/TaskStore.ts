@@ -27,7 +27,7 @@ export const useTaskStore = defineStore('taskStore', {
     async getTasks() {
       this.loading = true
 
-      const res = await fetch('http://localhost:3000/tasksa')
+      const res = await fetch('http://localhost:3000/tasks')
       const data = await res.json()
       if (!res.ok) {
         this.alert.message = (data && data.message) || res.statusText;
