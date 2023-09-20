@@ -9,6 +9,7 @@ export const useTaskStore = defineStore('taskStore', {
       { id: 3, title: 'become an eldern lord', isFav: true },
       { id: 4, title: 'eat some pinapples', isFav: false }
     ],
+    loading: false,
     filter: 'all'
   }),
   getters: {
@@ -25,6 +26,15 @@ export const useTaskStore = defineStore('taskStore', {
     }
   },
   actions: {
+    async getTasks() {
+      this.loading = true
+
+      const res = await fetch('http://localhost:3000/tasks')
+      const data = await res.json()
+
+      this.tasks = data.tasks
+      this.loading = false
+    },
     addTask(task: Task) {
       this.tasks.push(task)
     },
