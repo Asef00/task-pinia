@@ -1,10 +1,13 @@
 import type { Task } from '@/types/Task'
 import { defineStore } from 'pinia'
 
+type AlertType = 'error' | 'warn' | 'info'
+
 export const useTaskStore = defineStore('taskStore', {
   state: () => ({
     tasks: [] as Task[],
     loading: false,
+    alert: { type: 'info' as AlertType, message: '', show: false },
     filter: 'all'
   }),
   getters: {
@@ -24,14 +27,34 @@ export const useTaskStore = defineStore('taskStore', {
     async getTasks() {
       this.loading = true
 
-      const res = await fetch('http://localhost:3000/tasks')
+      const res = await fetch('http://localhost:3000/tasksa')
+      if (!res.ok) {
+        // this.alert.message = (data && data.message) || res.statusText;
+        this.alert.message = 'Something went wrong!';
+        this.alert.type = 'error'
+        this.alert.show = true
+      }
       const data = await res.json()
 
       this.tasks = data
       this.loading = false
     },
-    addTask(task: Task) {
+    async addTask(task: Task) {
       this.tasks.push(task)
+      this.loading = true
+      const res = await fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        body: JSON.stringify(task),
+        headers: { 'Content-Type': 'application/json' }
+      })
+
+      if (!res.ok) {
+        // this.alert.message = (data && data.message) || res.statusText;
+        this.alert.message = 'Something went wrong!';
+        this.alert.type = 'error'
+        this.alert.show = true
+      }
+      this.loading = false
     },
     deleteTask(id: number) {
       const removeIndex = this.tasks.map((item) => item.id).indexOf(id)
