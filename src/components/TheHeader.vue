@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTaskStore } from '@/stores/TaskStore'
 import AddTaskForm from '@/components/AddTaskForm.vue'
-const activeClass = 'bg-lime-500 text-black border-black'
+const activeClass = 'bg-amber-300 text-black border-black'
 
 const taskStore = useTaskStore()
 </script>
@@ -15,7 +15,7 @@ const taskStore = useTaskStore()
       </div>
       <AddTaskForm />
     </div>
-    <nav class="flex gap-2 justify-end">
+    <nav class="flex gap-2 justify-center mt-4">
       <button
         @click="taskStore.filter = 'all'"
         class="border px-2 py-1 rounded"
