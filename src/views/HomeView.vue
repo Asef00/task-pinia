@@ -20,8 +20,7 @@ taskStore.getTasks()
         <TaskItem v-for="task in taskStore.favs" :key="task.id" :task="task" />
       </template>
       <!-- loading -->
-      <!-- <LoadingSpinner v-if="taskStore.loading" /> -->
-      <LoadingSpinner  />
+      <LoadingSpinner v-if="taskStore.loading" />
     </div>
   </main>
 </template>
