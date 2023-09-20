@@ -30,7 +30,7 @@ export const useTaskStore = defineStore('taskStore', {
       const res = await fetch('http://localhost:3000/tasks')
       const data = await res.json()
       if (!res.ok) {
-        this.alert.message = (data && data.message) || res.statusText;
+        this.alert.message = (data && data.message) || res.statusText
         this.alert.type = 'error'
         this.alert.show = true
       }
@@ -48,16 +48,28 @@ export const useTaskStore = defineStore('taskStore', {
       })
 
       if (!res.ok) {
-        // this.alert.message = (data && data.message) || res.statusText;
-        this.alert.message = 'Something went wrong!';
+        this.alert.message = 'Something went wrong!'
         this.alert.type = 'error'
         this.alert.show = true
       }
       this.loading = false
     },
-    deleteTask(id: number) {
-      const removeIndex = this.tasks.map((item) => item.id).indexOf(id)
-      ~removeIndex && this.tasks.splice(removeIndex, 1)
+    async deleteTask(id: number) {
+      this.loading = true
+
+      const res = await fetch('http://localhost:3000/tasks/' + id, {
+        method: 'DELETE'
+      })
+
+      if (!res.ok) {
+        this.alert.message = 'Something went wrong!'
+        this.alert.type = 'error'
+        this.alert.show = true
+      } else {
+        const removeIndex = this.tasks.map((item) => item.id).indexOf(id)
+        ~removeIndex && this.tasks.splice(removeIndex, 1)
+      }
+      this.loading = false
     },
     toggleFav(id: number) {
       const toggleTask = this.tasks.find((item) => item.id == id)
