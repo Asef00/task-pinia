@@ -8,8 +8,8 @@ taskStore.getTasks()
 </script>
 
 <template>
-  <main>
-    <div class="flex flex-col gap-3">
+  <main class="relative">
+    <div class="flex flex-col gap-3" :class="{ 'blur-sm': taskStore.loading }">
       <!-- filters -->
       <template v-if="taskStore.filter === 'all'">
         <p>You have {{ taskStore.totalCount }} tasks left to do</p>
@@ -19,8 +19,11 @@ taskStore.getTasks()
         <p>You have {{ taskStore.favsCount }} favorite tasks</p>
         <TaskItem v-for="task in taskStore.favs" :key="task.id" :task="task" />
       </template>
-      <!-- loading -->
-      <LoadingSpinner v-if="taskStore.loading" />
     </div>
+    <!-- loading -->
+    <LoadingSpinner
+      v-if="taskStore.loading"
+      class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+    />
   </main>
 </template>
