@@ -17,6 +17,6 @@ const taskStore = useTaskStore()
 const activeClass = computed(() => ({
   'bg-orange-100 border-orange-500 text-orange-700': taskStore.alert.type === 'warn',
   'bg-red-100 border-red-500 text-red-700': taskStore.alert.type === 'error',
-  'bg-blue-100 border-blue-500 text-blue-700': taskStore.alert.type === 'info',
+  'bg-blue-100 border-blue-500 text-blue-700': taskStore.alert.type === 'info'
 }))
 </script>
