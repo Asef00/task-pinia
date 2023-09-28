@@ -19,7 +19,7 @@ const taskStore = useTaskStore()
 
 const addTask = () => {
   if (newTask.value.length) {
-    taskStore.addTask({ id: taskStore.totalCount + 1, title: newTask.value, isFav: false })
+    taskStore.addTask({ title: newTask.value, isFav: false })
     newTask.value = ''
   }
 }
