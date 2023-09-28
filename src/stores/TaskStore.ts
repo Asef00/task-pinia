@@ -57,7 +57,7 @@ export const useTaskStore = defineStore('taskStore', {
         this.alert.type = 'error'
         this.alert.show = true
       } else {
-        this.tasks.push(task)
+        this.tasks.push(await res.json())
       }
 
       this.loading = false
