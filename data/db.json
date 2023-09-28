@@ -3,11 +3,11 @@
     {
       "id": 2,
       "title": "mow the lawn",
-      "isFav": false
+      "isFav": true
     },
     {
       "title": "hell",
-      "isFav": true,
+      "isFav": false,
       "id": 4
     }
   ]
